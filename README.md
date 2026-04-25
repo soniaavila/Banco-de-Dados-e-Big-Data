@@ -27,6 +27,27 @@ Sonia Avila
 ├── docker-compose.yml
 ├── requirements.txt
 
+###  Sobre a aplicação
+
+A aplicação permite cadastrar, visualizar, editar e excluir dados armazenados no MongoDB, utilizando uma interface simples desenvolvida com Streamlit.
+
+### Segurança e Boas Práticas
+
+Embora este projeto tenha fins acadêmicos, em um ambiente real seriam necessárias medidas adicionais, como:
+
+Validação de dados de entrada
+Controle de acesso de usuários
+Proteção de dados sensíveis
+Adequação à LGPD
+
+### Objetivo do Projeto
+
+Demonstrar a integração entre diferentes tecnologias, abordando conceitos de desenvolvimento web, banco de dados e conteinerização de aplicações.
+
+### Considerações Finais
+
+Este projeto representa uma aplicação prática dos conhecimentos adquiridos em desenvolvimento de sistemas, evidenciando a criação de uma aplicação funcional de forma organizada e estruturada.
+
 
 ## Como Executar
 
@@ -46,23 +67,5 @@ http://localhost:8501
 docker build -t projetopython .
 docker run -p 8501:8501 projetopython
 
-Sobre a aplicação
 
-A aplicação permite cadastrar, visualizar, editar e excluir dados armazenados no MongoDB, utilizando uma interface simples desenvolvida com Streamlit.
 
-Segurança e Boas Práticas
-
-Embora este projeto tenha fins acadêmicos, em um ambiente real seriam necessárias medidas adicionais, como:
-
-Validação de dados de entrada
-Controle de acesso de usuários
-Proteção de dados sensíveis
-Adequação à LGPD
-
-Objetivo do Projeto
-
-Demonstrar a integração entre diferentes tecnologias, abordando conceitos de desenvolvimento web, banco de dados e conteinerização de aplicações.
-
-Considerações Finais
-
-Este projeto representa uma aplicação prática dos conhecimentos adquiridos em desenvolvimento de sistemas, evidenciando a criação de uma aplicação funcional de forma organizada e estruturada.
