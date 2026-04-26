@@ -5,8 +5,7 @@ import pandas as pd
 # =========================
 # CONEXÃO COM O MONGODB
 # =========================
-# Conexão com banco local (fora do Docker)
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb://mongodb:27017/")
 db = client["eshop"]
 collection = db["clientes"]
 
@@ -32,7 +31,6 @@ if menu == "Inserir":
 
     if st.button("Salvar"):
         if nome and email:
-            # Inserção de dados no MongoDB
             collection.insert_one({
                 "nome": nome,
                 "email": email
@@ -56,7 +54,6 @@ elif menu == "Visualizar":
         st.dataframe(df)
 
         # 📊 MÉTRICA
-        # Exibe a quantidade total de registros cadastrados
         st.subheader("📊 Estatísticas")
         st.metric("Total de registros", len(df))
 
@@ -69,29 +66,25 @@ elif menu == "Visualizar":
 elif menu == "Editar/Excluir":
     st.subheader("✏️ Editar ou Excluir Cliente")
 
-    # Busca todos os dados do banco
     dados = list(collection.find())
 
     if dados:
-        # Cria uma lista com nome + parte do ID para evitar duplicidade
-        opcoes = {f"{d['nome']} ({str(d['_id'])[:5]})": d for d in dados}
+        # Seleciona o cliente direto do objeto
+        cliente = st.selectbox(
+            "Selecione um cliente",
+            options=dados,
+            format_func=lambda x: x["nome"]
+        )
 
-        selecionado = st.selectbox("Selecione um cliente", list(opcoes.keys()))
-
-        cliente = opcoes[selecionado]
-
-        # Campos para edição dos dados
+        # Campos aparecem sempre
         novo_nome = st.text_input("Novo nome", cliente["nome"])
         novo_email = st.text_input("Novo email", cliente["email"])
 
         col1, col2 = st.columns(2)
 
-        # =========================
         # EDITAR
-        # =========================
         with col1:
             if st.button("Atualizar"):
-                # Atualiza os dados no MongoDB
                 collection.update_one(
                     {"_id": cliente["_id"]},
                     {"$set": {
@@ -99,16 +92,13 @@ elif menu == "Editar/Excluir":
                         "email": novo_email
                     }}
                 )
-                st.success("Cliente atualizado com sucesso!")
+                st.success("Atualizado com sucesso!")
 
-        # =========================
         # EXCLUIR
-        # =========================
         with col2:
             if st.button("Excluir"):
-                # Remove o registro do banco
                 collection.delete_one({"_id": cliente["_id"]})
-                st.warning("Cliente excluído!")
+                st.warning("Excluído!")
 
     else:
         st.info("Nenhum dado para editar ou excluir.")
