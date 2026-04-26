@@ -83,6 +83,9 @@ http://localhost:8501
 docker build -t projetopython .
 docker run -p 8501:8501 projetopython
 
+
+
+
 ## Considerações Finais
 
 Este projeto representa uma aplicação prática dos conhecimentos adquiridos, evidenciando a construção de uma aplicação funcional de forma organizada e estruturada.
