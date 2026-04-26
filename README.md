@@ -25,11 +25,11 @@ Autora: Sonia Avila
 - Integração com banco de dados MongoDB  
 - Execução via Docker  
 
-### Análise de Dados
+### Análise de Dados (Métrica da Aplicação)
 
 A aplicação possui uma funcionalidade de análise básica de dados, exibindo o total de registros cadastrados em tempo real.
 
-Essa métrica permite uma visualização rápida do volume de dados armazenados, demonstrando na prática conceitos relacionados a Big Data.
+Essa métrica permite uma visualização rápida do volume de dados armazenados, demonstrando, na prática, conceitos relacionados ao Big Data.
 
 ---
 
