@@ -15,10 +15,17 @@ Sonia Avila
 
 ## Funcionalidades
 
-- Inserção de dados (nome e e-mail)
-- Edição e exclusão de dados
-- Consulta e visualização em tabela
-- Manipulação de dados com Pandas
+- Cadastro de usuários (nome e e-mail)
+- Visualização dos dados em tabela
+- Edição e exclusão de registros
+- Integração com banco de dados MongoDB
+- Execução via Docker
+
+### Análise de Dados
+
+A aplicação também possui uma funcionalidade de análise básica de dados, exibindo o total de registros cadastrados em tempo real.
+
+Essa métrica permite uma visualização rápida do volume de dados armazenados, demonstrando na prática conceitos relacionados a Big Data.
 
 ##  Estrutura do Projeto
 📁 projeto-python
