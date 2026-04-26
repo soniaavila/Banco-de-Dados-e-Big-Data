@@ -79,9 +79,10 @@ Acesse no navegador:
 
 http://localhost:8501
 
-Execução alternativa (Docker)
+## Execução alternativa (Docker)
 docker build -t projetopython .
 docker run -p 8501:8501 projetopython
-Considerações Finais
+
+## Considerações Finais
 
 Este projeto representa uma aplicação prática dos conhecimentos adquiridos, evidenciando a construção de uma aplicação funcional de forma organizada e estruturada.
