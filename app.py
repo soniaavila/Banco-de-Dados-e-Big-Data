@@ -15,7 +15,9 @@ menu = st.sidebar.selectbox("Menu", [
     "Editar/Excluir"
 ])
 
+# =========================
 # INSERIR
+# =========================
 if menu == "Inserir":
     nome = st.text_input("Nome")
     email = st.text_input("Email")
@@ -27,20 +29,39 @@ if menu == "Inserir":
         })
         st.success("Salvo!")
 
+# =========================
 # VISUALIZAR
+# =========================
 elif menu == "Visualizar":
-    dados = list(collection.find({}, {"_id": 0}))
-    df = pd.DataFrame(dados)
-    st.dataframe(df)
-
-# EDITAR / EXCLUIR
-elif menu == "Editar/Excluir":
-    dados = list(collection.find())
     
-    if dados:
-        nomes = [d["nome"] for d in dados]
-        selecionado = st.selectbox("Selecione", nomes)
+    # Consulta os documentos no MongoDB e transforma em DataFrame
+    # Boa prática: o uso do Pandas facilita a manipulação, organização
+    # e análise dos dados
+    df = pd.DataFrame(list(collection.find({}, {"_id": 0})))
+
+    if not df.empty:
+        st.subheader("📋 Dados cadastrados")
+        st.dataframe(df)
+
+        # 📊 MÉTRICA
+        st.subheader("📊 Estatísticas")
+        st.metric("Total de registros", len(df))
+
+    else:
+        st.info("Nenhum dado cadastrado ainda.")
+
+# =========================
+# EDITAR / EXCLUIR
+# =========================
+elif menu == "Editar/Excluir":
+    
+    df = pd.DataFrame(list(collection.find()))
+
+    if not df.empty:
+        selecionado = st.selectbox("Selecione", df["nome"])
 
         if st.button("Excluir"):
             collection.delete_one({"nome": selecionado})
             st.warning("Excluído!")
+    else:
+        st.info("Nenhum dado para editar ou excluir.")
